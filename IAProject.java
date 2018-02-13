@@ -1,7 +1,3 @@
-/**
- *
- * @author johnjus18
- */
 public class IAProject {
     /*
     Sources:
