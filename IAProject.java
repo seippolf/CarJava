@@ -23,7 +23,7 @@ public class IAProject {
         Vd = Volumetric displacement (In Cubic Inches)
     
     */
-    public static double airflowActual(int hpTarget, double afRatio, double bsFuelConsumption) {
+    public static double airflowActual(double hpTarget, double afRatio, double bsFuelConsumption) {
         double hp = hpTarget;
         double af = afRatio;
         double bsfc = bsFuelConsumption;
