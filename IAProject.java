@@ -1,3 +1,5 @@
+import java.awt.Dimension;
+import javax.swing.*;
 public class IAProject {
     /*
     Sources:
@@ -23,7 +25,7 @@ public class IAProject {
         Vd = Volumetric displacement (In Cubic Inches)
     
     */
-    public static double airflowActual(double hpTarget, double afRatio, double bsFuelConsumption) {
+    private static double airflowActual(double hpTarget, double afRatio, double bsFuelConsumption) {
         double hp = hpTarget;
         double af = afRatio;
         double bsfc = bsFuelConsumption;
@@ -31,7 +33,7 @@ public class IAProject {
         return wa;
         
     }
-    public static double manifoldPressure(double wActual, double imTemperature, double volEfficiency, double engineSpeed, double engineDisplacement) {
+    private static double manifoldPressure(double wActual, double imTemperature, double volEfficiency, double engineSpeed, double engineDisplacement) {
         double wa = wActual;
         double r = 639.6; //Gas constant
         double tm = imTemperature;
@@ -42,12 +44,18 @@ public class IAProject {
         return mp;
         
     }
-    public static void main(String[] args) {
-        System.out.println("Airflowactual: " + airflowActual(425,22,0.38));
-        System.out.println("Manifold pressure requirements: " + manifoldPressure(airflowActual(425,22,0.38),130,0.98,3300,400));
-        
+    private static void showGUI() {
+        JFrame frame = new JFrame("CarJava");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(400,300));
+
+        JLabel label = new JLabel("Manifold pressure requirements: " + manifoldPressure(airflowActual(425,22,0.38),130,0.98,3300,400));
+        frame.getContentPane().add(label);
+
+        frame.pack();
+        frame.setVisible(true);
     }
-    public static void compressorMap() {
-    
+    public static void main(String[] args) {
+        showGUI();
     }
 }
